@@ -42,7 +42,7 @@ export async function getCampaignGoal(): Promise<number> {
     const contract = new Contract(CROWDFUNDING_CONTRACT_ID);
     const response = await rpcServer.simulateTransaction(
       new TransactionBuilder(
-        new Account("GBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB", "0"),
+        new Account("GAIQS24YAG7NRECNWIQ4ICTN2JTEYAQAWM75U3ZBUIKSI77E7RLPIPLK", "0"),
         { fee: "100", networkPassphrase: Networks.TESTNET }
       )
         .addOperation(contract.call("get_goal"))
@@ -72,7 +72,7 @@ export async function getCampaignTotalRaised(): Promise<number> {
     const contract = new Contract(CROWDFUNDING_CONTRACT_ID);
     const response = await rpcServer.simulateTransaction(
       new TransactionBuilder(
-        new Account("GBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB", "0"),
+        new Account("GAIQS24YAG7NRECNWIQ4ICTN2JTEYAQAWM75U3ZBUIKSI77E7RLPIPLK", "0"),
         { fee: "100", networkPassphrase: Networks.TESTNET }
       )
         .addOperation(contract.call("get_total_raised"))
@@ -102,7 +102,7 @@ export async function getUserBadgeTier(publicKey: string): Promise<number> {
     const contract = new Contract(REWARDS_BADGE_CONTRACT_ID);
     const response = await rpcServer.simulateTransaction(
       new TransactionBuilder(
-        new Account("GBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB", "0"),
+        new Account("GAIQS24YAG7NRECNWIQ4ICTN2JTEYAQAWM75U3ZBUIKSI77E7RLPIPLK", "0"),
         { fee: "100", networkPassphrase: Networks.TESTNET }
       )
         .addOperation(
