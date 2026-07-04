@@ -248,3 +248,5 @@ See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rule
 <!-- commit upgrade iteration 2 -->
 
 <!-- commit upgrade iteration 3 -->
+
+<!-- commit upgrade iteration 4 -->
