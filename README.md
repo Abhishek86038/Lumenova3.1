@@ -284,3 +284,5 @@ See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rule
 <!-- commit upgrade iteration 20 -->
 
 <!-- commit upgrade iteration 21 -->
+
+<!-- commit upgrade iteration 22 -->
