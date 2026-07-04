@@ -176,9 +176,15 @@ export default function App() {
       setLoadingAction("success");
       setDonateAmount("50");
 
-      // Reload updated records
+      // Reload updated records immediately
       await loadCampaignData();
       await loadUserData(userAddress);
+
+      // Reload again after a 2.5-second delay to ensure ledger indexing propagates fully to RPC nodes
+      setTimeout(async () => {
+        await loadCampaignData();
+        await loadUserData(userAddress);
+      }, 2500);
     } catch (err: any) {
       console.error("Donation failed:", err);
       setErrorMessage(err.message || "An unexpected error occurred during transaction execution.");

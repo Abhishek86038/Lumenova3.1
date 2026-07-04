@@ -221,9 +221,10 @@ export async function getCampaignEvents(): Promise<CampaignEvent[]> {
         const topics = record.topic;
         const topic0 = scValToNative(topics[0]);
 
-        if (topic0 === "donate") {
+        if (topic0 === "donation_received") {
           const donorVal = scValToNative(topics[1]);
-          const amountVal = Number(scValToNative(record.value)) / 10_000_000;
+          const val = scValToNative(record.value);
+          const amountVal = Array.isArray(val) ? Number(val[0]) / 10_000_000 : Number(val) / 10_000_000;
           events.push({
             id: record.id,
             type: "donation",
@@ -231,7 +232,7 @@ export async function getCampaignEvents(): Promise<CampaignEvent[]> {
             amount: amountVal,
             ledger: record.ledger,
           });
-        } else if (topic0 === "badge_mint" || topic0 === "badge_upgrade") {
+        } else if (topic0 === "badge_minted") {
           const donorVal = scValToNative(topics[1]);
           const tierNum = Number(scValToNative(record.value));
           const tiers = ["None", "Bronze", "Silver", "Gold"];
