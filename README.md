@@ -310,3 +310,5 @@ See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rule
 <!-- commit upgrade iteration 33 -->
 
 <!-- commit upgrade iteration 34 -->
+
+<!-- commit upgrade iteration 35 -->
