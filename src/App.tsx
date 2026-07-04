@@ -654,7 +654,7 @@ export default function App() {
                       </a>
                     </div>
 
-                    <div className="flex items-center gap-2.5">
+                    <div className="flex items-center gap-3 mt-1">
                       <div className={`w-8 h-8 rounded-lg shrink-0 flex items-center justify-center text-xs font-black ${
                         ev.type === "donation"
                           ? "bg-emerald-950/60 border border-emerald-800/40 text-emerald-400"
@@ -662,14 +662,16 @@ export default function App() {
                       }`}>
                         {ev.type === "donation" ? "$" : "★"}
                       </div>
-                      <div className="leading-tight">
+                      <div className="leading-tight min-w-0 flex-1">
                         <p className="text-xs font-bold text-slate-200">
                           {ev.type === "donation"
-                            ? `Donated ${ev.amount} XLM`
-                            : `Minted ${ev.tier} Badge`}
+                            ? `Donated ${ev.amount ?? 0} XLM`
+                            : ev.type === "badge_mint"
+                            ? `Minted ${ev.tier ?? "Bronze"} Badge`
+                            : "Activity recorded"}
                         </p>
-                        <p className="text-[10px] text-slate-500 font-medium truncate max-w-[200px] mt-0.5">
-                          by {ev.actor.slice(0, 8)}...{ev.actor.slice(-8)}
+                        <p className="text-[10px] text-slate-500 font-medium truncate mt-0.5">
+                          by {ev.actor ? `${ev.actor.slice(0, 8)}...${ev.actor.slice(-8)}` : "Unknown Backer"}
                         </p>
                       </div>
                     </div>
