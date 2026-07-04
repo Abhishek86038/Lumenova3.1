@@ -318,3 +318,5 @@ See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rule
 <!-- commit upgrade iteration 37 -->
 
 <!-- commit upgrade iteration 38 -->
+
+<!-- commit upgrade iteration 39 -->
