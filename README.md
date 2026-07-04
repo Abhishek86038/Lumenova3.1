@@ -42,7 +42,7 @@
 
 ## 🔗 Project Links & Verification
 
-- **Live Demo URL:** [<LIVE_DEMO_URL>](<LIVE_DEMO_URL>)
+- **Live Demo URL:** [Lumenova Web App | Live Demo](https://lumenova3-1.vercel.app/)
 - **Demo Video Walkthrough:** [YouTube Video | Demo Walkthrough](https://youtu.be/lX7_2AUlwvg)
 - **Stellar Expert Verification:**
   - Crowdfunding Contract: [Stellar.Expert | `<CROWDFUNDING_CONTRACT_ID>`](https://stellar.expert/explorer/testnet/contract/`<CROWDFUNDING_CONTRACT_ID>`)
