@@ -68,7 +68,7 @@ export default function App() {
     }
   };
 
-  // Check if wallet already connected or Freighter exists
+  // Check if wallet already connected or Freighter exists on mount
   useEffect(() => {
     const initWallet = async () => {
       try {
@@ -88,8 +88,10 @@ export default function App() {
 
     initWallet();
     loadCampaignData();
+  }, []);
 
-    // Poll events and campaign raised amount every 10 seconds
+  // Poll events and campaign raised amount every 10 seconds
+  useEffect(() => {
     const interval = setInterval(() => {
       loadCampaignData();
       if (userAddress) {
