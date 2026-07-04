@@ -635,44 +635,59 @@ export default function App() {
             {/* Feed Scroll List */}
             <div className="grow overflow-y-auto max-h-[420px] flex flex-col gap-3 pr-1.5 custom-scrollbar">
               {filteredEvents.length > 0 ? (
-                filteredEvents.map((ev) => (
-                  <div
-                    key={ev.id}
-                    className="bg-slate-950/70 border border-slate-850 rounded-xl p-3.5 hover:border-slate-800 transition flex flex-col gap-2 relative overflow-hidden group"
-                  >
-                    <div className="flex justify-between items-center border-b border-slate-900 pb-1.5 mb-1.5">
-                      <span className="text-[10px] font-bold text-slate-500 tracking-wider">
-                        LEDGER #{ev.ledger}
-                      </span>
-                      <a
-                        href={`https://stellar.expert/explorer/testnet/tx/${ev.id.split("-")[0]}`}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-[10px] text-cyan-400 hover:text-cyan-300 hover:underline font-bold transition"
+                filteredEvents.map((ev) => {
+                  try {
+                    const actorStr = ev.actor ? String(ev.actor) : "";
+                    return (
+                      <div
+                        key={ev.id}
+                        className="bg-slate-950/70 border border-slate-850 rounded-xl p-3.5 hover:border-slate-800 transition flex flex-col gap-2 relative overflow-hidden group"
                       >
-                        Details ↗
-                      </a>
-                    </div>
+                        <div className="flex justify-between items-center border-b border-slate-900 pb-1.5 mb-1.5">
+                          <span className="text-[10px] font-bold text-slate-500 tracking-wider">
+                            LEDGER #{ev.ledger}
+                          </span>
+                          <a
+                            href={`https://stellar.expert/explorer/testnet/tx/${ev.id.split("-")[0]}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-[10px] text-cyan-400 hover:text-cyan-300 hover:underline font-bold transition"
+                          >
+                            Details ↗
+                          </a>
+                        </div>
 
-                    <div className="text-xs">
-                      {ev.type === "donation" ? (
-                        <p className="text-slate-200 leading-normal">
-                          <span className="text-emerald-400 font-black mr-1">💰 Donated {ev.amount ?? 0} XLM</span>
-                          <span className="text-slate-500 text-[10px] block sm:inline sm:ml-2">
-                            by {ev.actor ? `${ev.actor.slice(0, 6)}...${ev.actor.slice(-6)}` : "Unknown"}
-                          </span>
-                        </p>
-                      ) : (
-                        <p className="text-slate-200 leading-normal">
-                          <span className="text-violet-400 font-black mr-1">★ Minted {ev.tier ?? "Bronze"} Badge</span>
-                          <span className="text-slate-500 text-[10px] block sm:inline sm:ml-2">
-                            by {ev.actor ? `${ev.actor.slice(0, 6)}...${ev.actor.slice(-6)}` : "Unknown"}
-                          </span>
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                ))
+                        <div className="text-xs">
+                          {ev.type === "donation" ? (
+                            <p className="text-slate-200 leading-normal">
+                              <span className="text-emerald-400 font-black mr-1">💰 Donated {ev.amount ?? 0} XLM</span>
+                              <span className="text-slate-500 text-[10px] block sm:inline sm:ml-2">
+                                by {actorStr ? `${actorStr.slice(0, 6)}...${actorStr.slice(-6)}` : "Unknown"}
+                              </span>
+                            </p>
+                          ) : (
+                            <p className="text-slate-200 leading-normal">
+                              <span className="text-violet-400 font-black mr-1">★ Minted {ev.tier ?? "Bronze"} Badge</span>
+                              <span className="text-slate-500 text-[10px] block sm:inline sm:ml-2">
+                                by {actorStr ? `${actorStr.slice(0, 6)}...${actorStr.slice(-6)}` : "Unknown"}
+                              </span>
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  } catch (err: any) {
+                    return (
+                      <div
+                        key={ev.id}
+                        className="bg-rose-950/60 border border-rose-800/80 rounded-xl p-3 text-xs text-rose-200"
+                      >
+                        <p className="font-bold">Error rendering event:</p>
+                        <p className="font-mono text-[10px] mt-1">{err.message}</p>
+                      </div>
+                    );
+                  }
+                })
               ) : (
                 <div className="text-center py-10 text-slate-600 text-xs font-medium">
                   No recent events found.

@@ -49,6 +49,10 @@ describe("Lumenova3.1 Frontend Dashboard", () => {
     expect(screen.getByText("Decentralized Crowdfunding Campaign")).toBeDefined();
     expect(screen.getByText("Goal: 1,000 XLM")).toBeDefined();
     expect(screen.getByText("Active Network: Stellar Testnet")).toBeDefined();
+
+    await waitFor(() => {
+      expect(screen.getByText(/Donated 50/i)).toBeDefined();
+    });
   });
 
   it("auto-connects wallet on mount and allows disconnect", async () => {
