@@ -10,13 +10,33 @@
 
 ## 📸 Screenshots & Gallery
 
-| Main Dashboard | Wallet Connection | Badge Upgrade Success |
-| :--- | :--- | :--- |
-| ![Main Dashboard Preview](./screenshots/dashboard.png) <br> *Visual representation of campaign goals, progress, and interactive slider.* | ![Wallet Connection Popup](./screenshots/wallet-connected.png) <br> *Freighter wallet integration connecting account and balance dynamically.* | ![On-chain Badge Minted](./screenshots/badge-upgrade.png) <br> *Bronze, Silver, or Gold badge earned upon hitting contribution tiers.* |
+### 1. Main Dashboard
+![Main Dashboard Preview](./screenshots/dashboard.png)
+*Visual representation of campaign goals, progress, and interactive slider.*
 
-| Live Event Feed | Mobile Responsive View | Test Output | CI/CD Pipeline |
-| :--- | :--- | :--- | :--- |
-| ![Live Event Feed](./screenshots/event-feed.png) <br> *Live event logs polled directly from Soroban RPC.* | ![Mobile Responsive View](./screenshots/mobile-responsive.png) <br> *Responsive glassmorphic UI optimized for mobile viewports.* | ![Test Suite Output](./screenshots/test-output.png) <br> *Passing Vitest dashboard unit and integration test runs.* | ![CI/CD Pipeline Run](./screenshots/github-actions.png) <br> *Successful GitHub Actions workflow run.* |
+### 2. Wallet Connection
+![Wallet Connection Popup](./screenshots/wallet-connected.png)
+*Freighter wallet integration connecting account and balance dynamically.*
+
+### 3. Badge Upgrade Success
+![On-chain Badge Minted](./screenshots/badge-upgrade.png)
+*Bronze, Silver, or Gold badge earned upon hitting contribution tiers.*
+
+### 4. Live Event Feed
+![Live Event Feed](./screenshots/event-feed.png)
+*Live event logs polled directly from Soroban RPC.*
+
+### 5. Mobile Responsive View
+![Mobile Responsive View](./screenshots/mobile-responsive.png)
+*Responsive glassmorphic UI optimized for mobile viewports.*
+
+### 6. Test Output
+![Test Suite Output](./screenshots/test-output.png)
+*Passing Vitest dashboard unit and integration test runs.*
+
+### 7. CI/CD Pipeline
+![CI/CD Pipeline Run](./screenshots/github-actions.png)
+*Successful GitHub Actions workflow run.*
 
 ---
 
