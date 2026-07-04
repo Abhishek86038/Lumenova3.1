@@ -47,12 +47,16 @@ describe("Lumenova3.1 Frontend Dashboard", () => {
   it("renders the campaign info and progress correctly", async () => {
     render(<App />);
 
-    expect(screen.getByText("Decentralized Crowdfunding Campaign")).toBeDefined();
-    expect(screen.getByText("Goal: 1,000 XLM")).toBeDefined();
+    expect(screen.getByText("Lumenova Crowdfunding")).toBeDefined();
+    expect(screen.getByText("Milestone: 1,000 XLM")).toBeDefined();
     expect(screen.getByText("Active Network: Stellar Testnet")).toBeDefined();
 
     await waitFor(() => {
-      expect(screen.getByText(/Donated 50/i)).toBeDefined();
+      const elements = screen.getAllByText((_, element) => {
+        const normalized = element?.textContent?.replace(/\s+/g, "").toLowerCase() || "";
+        return normalized === "+50xlm";
+      });
+      expect(elements.length).toBeGreaterThanOrEqual(1);
     });
   });
 
