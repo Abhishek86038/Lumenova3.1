@@ -640,40 +640,36 @@ export default function App() {
                     key={ev.id}
                     className="bg-slate-950/70 border border-slate-850 rounded-xl p-3.5 hover:border-slate-800 transition flex flex-col gap-2 relative overflow-hidden group"
                   >
-                    <div className="flex justify-between items-start">
-                      <span className="text-[10px] font-semibold text-slate-500">
-                        Ledger #{ev.ledger}
+                    <div className="flex justify-between items-center border-b border-slate-900 pb-1.5 mb-1.5">
+                      <span className="text-[10px] font-bold text-slate-500 tracking-wider">
+                        LEDGER #{ev.ledger}
                       </span>
                       <a
                         href={`https://stellar.expert/explorer/testnet/tx/${ev.id.split("-")[0]}`}
                         target="_blank"
                         rel="noreferrer"
-                        className="text-[10px] text-cyan-500 hover:underline opacity-0 group-hover:opacity-100 transition"
+                        className="text-[10px] text-cyan-400 hover:text-cyan-300 hover:underline font-bold transition"
                       >
                         Details ↗
                       </a>
                     </div>
 
-                    <div className="flex items-center gap-3 mt-1">
-                      <div className={`w-8 h-8 rounded-lg shrink-0 flex items-center justify-center text-xs font-black ${
-                        ev.type === "donation"
-                          ? "bg-emerald-950/60 border border-emerald-800/40 text-emerald-400"
-                          : "bg-violet-950/60 border border-violet-800/40 text-violet-400"
-                      }`}>
-                        {ev.type === "donation" ? "$" : "★"}
-                      </div>
-                      <div className="leading-tight min-w-0 flex-1">
-                        <p className="text-xs font-bold text-slate-200">
-                          {ev.type === "donation"
-                            ? `Donated ${ev.amount ?? 0} XLM`
-                            : ev.type === "badge_mint"
-                            ? `Minted ${ev.tier ?? "Bronze"} Badge`
-                            : "Activity recorded"}
+                    <div className="text-xs">
+                      {ev.type === "donation" ? (
+                        <p className="text-slate-200 leading-normal">
+                          <span className="text-emerald-400 font-black mr-1">💰 Donated {ev.amount ?? 0} XLM</span>
+                          <span className="text-slate-500 text-[10px] block sm:inline sm:ml-2">
+                            by {ev.actor ? `${ev.actor.slice(0, 6)}...${ev.actor.slice(-6)}` : "Unknown"}
+                          </span>
                         </p>
-                        <p className="text-[10px] text-slate-500 font-medium truncate mt-0.5">
-                          by {ev.actor ? `${ev.actor.slice(0, 8)}...${ev.actor.slice(-8)}` : "Unknown Backer"}
+                      ) : (
+                        <p className="text-slate-200 leading-normal">
+                          <span className="text-violet-400 font-black mr-1">★ Minted {ev.tier ?? "Bronze"} Badge</span>
+                          <span className="text-slate-500 text-[10px] block sm:inline sm:ml-2">
+                            by {ev.actor ? `${ev.actor.slice(0, 6)}...${ev.actor.slice(-6)}` : "Unknown"}
+                          </span>
                         </p>
-                      </div>
+                      )}
                     </div>
                   </div>
                 ))
