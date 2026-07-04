@@ -43,7 +43,7 @@
 ## 🔗 Project Links & Verification
 
 - **Live Demo URL:** [<LIVE_DEMO_URL>](<LIVE_DEMO_URL>)
-- **Demo Video Walkthrough:** [<DEMO_VIDEO_URL>](<DEMO_VIDEO_URL>)
+- **Demo Video Walkthrough:** [YouTube Video | Demo Walkthrough](https://youtu.be/lX7_2AUlwvg)
 - **Stellar Expert Verification:**
   - Crowdfunding Contract: [Stellar.Expert | `<CROWDFUNDING_CONTRACT_ID>`](https://stellar.expert/explorer/testnet/contract/`<CROWDFUNDING_CONTRACT_ID>`)
   - Rewards Badge Contract: [Stellar.Expert | `<REWARDS_BADGE_CONTRACT_ID>`](https://stellar.expert/explorer/testnet/contract/`<REWARDS_BADGE_CONTRACT_ID>`)
