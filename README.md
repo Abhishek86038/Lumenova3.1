@@ -45,9 +45,9 @@
 - **Live Demo URL:** [Lumenova Web App | Live Demo](https://lumenova3-1.vercel.app/)
 - **Demo Video Walkthrough:** [YouTube Video | Demo Walkthrough](https://youtu.be/lX7_2AUlwvg)
 - **Stellar Expert Verification:**
-  - Crowdfunding Contract: [Stellar.Expert | `<CROWDFUNDING_CONTRACT_ID>`](https://stellar.expert/explorer/testnet/contract/`<CROWDFUNDING_CONTRACT_ID>`)
-  - Rewards Badge Contract: [Stellar.Expert | `<REWARDS_BADGE_CONTRACT_ID>`](https://stellar.expert/explorer/testnet/contract/`<REWARDS_BADGE_CONTRACT_ID>`)
-  - Verification Tx Hash: [Stellar.Expert | `<SAMPLE_TX_HASH>`](https://stellar.expert/explorer/testnet/tx/`<SAMPLE_TX_HASH>`)
+  - Crowdfunding Contract: [Stellar.Expert | `CDQ2DV6I7HIZYOALI4RZ42MTWKAFUODQWP4BH2GHMKP37Z5P7PB4OLTX`](https://stellar.expert/explorer/testnet/contract/CDQ2DV6I7HIZYOALI4RZ42MTWKAFUODQWP4BH2GHMKP37Z5P7PB4OLTX)
+  - Rewards Badge Contract: [Stellar.Expert | `CAAP5TGGZGLFXYGJY2H2O637FREG4EXE2PXI3A3Y4D6ST74QMI4YBD6C`](https://stellar.expert/explorer/testnet/contract/CAAP5TGGZGLFXYGJY2H2O637FREG4EXE2PXI3A3Y4D6ST74QMI4YBD6C)
+  - Verification Tx Hash: [Stellar.Expert | `4545935f8bb64de8cc5f3ef7e9e8f4955b252069eaee7c2a71d4bf74534a7873`](https://stellar.expert/explorer/testnet/tx/4545935f8bb64de8cc5f3ef7e9e8f4955b252069eaee7c2a71d4bf74534a7873)
 
 ---
 
