@@ -3,6 +3,8 @@
 ### Advanced Decentralized Crowdfunding Suite with On-Chain Rewards
 *Submitted for **Level 3 (Orange Belt)** of the **Stellar Builder Challenge**.*
 
+![Lumenova-L3 Dashboard Preview](./screenshot.png)
+
 Lumenova-L3 is a fully production-ready, highly interactive decentralized crowdfunding dApp built from scratch on **Stellar Testnet**. It features a primary **Crowdfunding Campaign** contract integrated with an on-chain **Rewards Badge System** contract that mints and upgrades non-fungible badges based on cumulative donation milestones.
 
 The dApp is fully functional and features **100% real on-chain data** with zero mock services.
