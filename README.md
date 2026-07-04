@@ -258,3 +258,5 @@ See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rule
 <!-- commit upgrade iteration 7 -->
 
 <!-- commit upgrade iteration 8 -->
+
+<!-- commit upgrade iteration 9 -->
