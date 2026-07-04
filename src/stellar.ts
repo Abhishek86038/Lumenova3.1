@@ -256,3 +256,16 @@ export async function getCampaignEvents(): Promise<CampaignEvent[]> {
     return [];
   }
 }
+
+/**
+ * Fetch the current ledger sequence number.
+ */
+export async function getCurrentLedger(): Promise<number> {
+  try {
+    const ledgers = await horizonServer.ledgers().order("desc").limit(1).call();
+    return ledgers.records[0].sequence;
+  } catch (err) {
+    console.error("Error getting current ledger:", err);
+    return 0;
+  }
+}

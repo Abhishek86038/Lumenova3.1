@@ -10,6 +10,7 @@ import {
   getCampaignGoal,
   getCampaignTotalRaised,
   getUserBadgeTier,
+  getCurrentLedger,
   prepareDonateTransaction,
   submitAndPollTransaction,
   getCampaignEvents,
@@ -29,6 +30,7 @@ export default function App() {
   const [goal, setGoal] = useState<number>(1000);
   const [raised, setRaised] = useState<number>(0);
   const [events, setEvents] = useState<CampaignEvent[]>([]);
+  const [currentLedger, setCurrentLedger] = useState<number>(0);
 
   // Action states
   const [donateAmount, setDonateAmount] = useState<string>("50");
@@ -49,6 +51,9 @@ export default function App() {
 
       const liveEvents = await getCampaignEvents();
       setEvents(liveEvents);
+
+      const ledger = await getCurrentLedger();
+      if (ledger > 0) setCurrentLedger(ledger);
     } catch (e) {
       console.error("Error loading campaign data:", e);
     }
@@ -355,6 +360,103 @@ export default function App() {
               <div className="flex justify-between items-center mt-3 text-xs text-slate-500 font-semibold">
                 <span>{progressPercent}% Complete</span>
                 <span>Active Network: Stellar Testnet</span>
+              </div>
+            </div>
+
+            {/* Recent Donations Section */}
+            <div className="border-t border-slate-800/60 pt-6 mt-6">
+              <div className="mb-4">
+                <h3 className="text-xs font-black uppercase tracking-wider text-slate-400 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                  Recent Contributions
+                </h3>
+              </div>
+
+              <div className="max-h-[220px] overflow-y-auto pr-1.5 custom-scrollbar flex flex-col gap-3">
+                {events.filter((e) => e.type === "donation").length > 0 ? (
+                  events
+                    .filter((e) => e.type === "donation")
+                    .map((ev) => {
+                      const actorStr = ev.actor ? String(ev.actor) : "";
+                      const ledgerDiff = currentLedger - ev.ledger;
+                      const secondsDiff = Math.max(0, ledgerDiff * 5.2);
+
+                      let relativeTime = "Just now";
+                      if (secondsDiff >= 86400) {
+                        relativeTime = `${Math.round(secondsDiff / 86400)}d ago`;
+                      } else if (secondsDiff >= 3600) {
+                        relativeTime = `${Math.round(secondsDiff / 3600)}h ago`;
+                      } else if (secondsDiff >= 60) {
+                        relativeTime = `${Math.round(secondsDiff / 60)}m ago`;
+                      } else if (secondsDiff > 0) {
+                        relativeTime = `${Math.round(secondsDiff)}s ago`;
+                      }
+
+                      // Find if a badge was minted in the same ledger/tx context
+                      const badgeTier = events.find(
+                        (badge) =>
+                          badge.type === "badge_mint" &&
+                          badge.actor === ev.actor &&
+                          Math.abs(badge.ledger - ev.ledger) <= 1
+                      )?.tier;
+
+                      let badgeTag = null;
+                      if (badgeTier === "Bronze") {
+                        badgeTag = (
+                          <span className="px-2 py-0.5 rounded-md text-[9px] font-black tracking-wider uppercase bg-amber-600/20 border border-amber-600/40 text-amber-400">
+                            Bronze
+                          </span>
+                        );
+                      } else if (badgeTier === "Silver") {
+                        badgeTag = (
+                          <span className="px-2 py-0.5 rounded-md text-[9px] font-black tracking-wider uppercase bg-slate-400/20 border border-slate-400/40 text-slate-300">
+                            Silver
+                          </span>
+                        );
+                      } else if (badgeTier === "Gold") {
+                        badgeTag = (
+                          <span className="px-2 py-0.5 rounded-md text-[9px] font-black tracking-wider uppercase bg-yellow-400/20 border border-yellow-400/40 text-yellow-400 animate-pulse">
+                            Gold
+                          </span>
+                        );
+                      }
+
+                      return (
+                        <div
+                          key={ev.id}
+                          className="bg-slate-950/60 border border-slate-850/80 rounded-xl p-3 flex items-center justify-between gap-4 hover:border-slate-800 transition"
+                        >
+                          <div className="flex items-center gap-2.5 min-w-0">
+                            <div className="w-7 h-7 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 shrink-0 text-xs">
+                              🔑
+                            </div>
+                            <div className="truncate">
+                              <span className="font-mono text-xs text-slate-300 font-medium">
+                                {actorStr ? `${actorStr.slice(0, 6)}...${actorStr.slice(-6)}` : "Anonymous"}
+                              </span>
+                              <span className="text-[10px] text-slate-500 font-semibold block mt-0.5">
+                                Ledger #{ev.ledger}
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-3 shrink-0">
+                            {badgeTag}
+                            <span className="font-black text-xs text-emerald-400">
+                              +{ev.amount ?? 0} XLM
+                            </span>
+                            <span className="text-[10px] text-slate-500 font-medium w-16 text-right">
+                              {relativeTime}
+                            </span>
+                          </div>
+                        </div>
+                      );
+                    })
+                ) : (
+                  <div className="text-center py-8 text-slate-600 text-xs font-semibold">
+                    No donations yet. Be the first to contribute!
+                  </div>
+                )}
               </div>
             </div>
           </div>
