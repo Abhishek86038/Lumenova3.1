@@ -302,3 +302,5 @@ See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rule
 <!-- commit upgrade iteration 29 -->
 
 <!-- commit upgrade iteration 30 -->
+
+<!-- commit upgrade iteration 31 -->
