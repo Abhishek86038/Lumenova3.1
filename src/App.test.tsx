@@ -7,6 +7,7 @@ vi.mock("@stellar/freighter-api", () => {
   return {
     isConnected: vi.fn(() => Promise.resolve({ isConnected: true })),
     getAddress: vi.fn(() => Promise.resolve({ address: "GCYMLCJTY6KNGGWRXHNMPDVQIPJZDQKHU45W4TA3QUELIPCFKY3ARHF5" })),
+    requestAccess: vi.fn(() => Promise.resolve({ address: "GCYMLCJTY6KNGGWRXHNMPDVQIPJZDQKHU45W4TA3QUELIPCFKY3ARHF5" })),
     signTransaction: vi.fn(),
   };
 });

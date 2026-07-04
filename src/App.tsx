@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
   isConnected,
   getAddress,
+  requestAccess,
   signTransaction
 } from "@stellar/freighter-api";
 import {
@@ -106,7 +107,7 @@ export default function App() {
         alert("Freighter Wallet is not installed or disabled. Please install it to interact with this dApp.");
         return;
       }
-      const keyResult = await getAddress();
+      const keyResult = await requestAccess();
       if (keyResult && keyResult.address) {
         setUserAddress(keyResult.address);
         setWalletConnected(true);
